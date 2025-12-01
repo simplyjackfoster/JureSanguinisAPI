@@ -114,6 +114,7 @@ class RuleEngine:
             TransmissionStatus.ALTERNATIVE_PATH: OverallStatus.POTENTIAL_VIA_RESIDENCE,
             TransmissionStatus.CONTESTED_EDGE_CASE: OverallStatus.INDETERMINATE_COMPLEX_CASE,
             TransmissionStatus.BROKEN_NATURALIZATION: OverallStatus.INDETERMINATE_COMPLEX_CASE,
+            TransmissionStatus.NO_ITALIAN_LINEAGE_ANCHOR: OverallStatus.NOT_ELIGIBLE_NO_ITALIAN_LINEAGE,
         }
         return priority.get(status, current)
 

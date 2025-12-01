@@ -23,11 +23,18 @@ def build_feature_flags(lineage_chain: List[LineageLink]) -> Dict:
         "tajani_exempt": False,
         "alternative_path_by_residence": False,
         "parent_citizenship_status": TransmissionStatus.INTACT.value,
+        "has_italian_birth_anchor": False,
     }
 
     for link in lineage_chain:
         parent = link.parent
         child = link.child
+
+        # At least one person in the chain must be born in Italy for jure sanguinis.
+        for person in (parent, child):
+            birth_country = (person.birth_country or "").strip().lower()
+            if birth_country == "italy":
+                flags["has_italian_birth_anchor"] = True
         # 1948 maternal rule
         if link.relationship.lower().startswith("mother"):
             if child.birth_date and child.birth_date < date(1948, 1, 1):

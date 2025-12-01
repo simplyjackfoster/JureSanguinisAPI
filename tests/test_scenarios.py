@@ -23,6 +23,42 @@ def base_ancestor():
     )
 
 
+def test_requires_italian_birth_anchor():
+    ancestor = Person(
+        id="a1",
+        name="Giorgio",
+        birth_date=date(1890, 5, 1),
+        birth_country="USA",
+    )
+    child = Person(
+        id="a2",
+        name="Maria",
+        birth_date=date(1920, 6, 1),
+        birth_country="Argentina",
+    )
+    applicant = Person(
+        id="app",
+        name="Applicant",
+        birth_date=date(1990, 7, 1),
+        birth_country="USA",
+    )
+
+    lineage = [
+        LineageLink(parent=ancestor, child=child, relationship="father"),
+        LineageLink(parent=child, child=applicant, relationship="father"),
+    ]
+
+    result = evaluate_lineage(lineage)
+
+    assert result.overall_status == OverallStatus.NOT_ELIGIBLE_NO_ITALIAN_LINEAGE
+    assert result.acquisition_mode == AcquisitionMode.UNKNOWN
+    assert not result.needs_lawyer
+    assert any(
+        outcome.status == TransmissionStatus.NO_ITALIAN_LINEAGE_ANCHOR
+        for outcome in result.rule_outcomes
+    )
+
+
 def test_clean_classic_case(base_ancestor):
     child = Person(
         id="a2",
