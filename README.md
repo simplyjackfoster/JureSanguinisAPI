@@ -46,10 +46,10 @@ curl -X POST http://127.0.0.1:8000/api/evaluate/ \
 
 ## Calling the hosted API
 
-The API is also deployed at `https://jure-sanguinis-api-git-codex-6ae004-simplyjackfosters-projects.vercel.app`. Use the same payload as above with the hosted base URL:
+The API is also deployed at `https://jure-sanguinis-api-git-main-simplyjackfosters-projects.vercel.app`. Use the same payload as above with the hosted base URL:
 
 ```bash
-curl -X POST https://jure-sanguinis-api-git-codex-6ae004-simplyjackfosters-projects.vercel.app/api/evaluate/ \
+curl -X POST https://jure-sanguinis-api-git-main-simplyjackfosters-projects.vercel.app/api/evaluate/ \
   -H "Content-Type: application/json" \
   -d '{
     "applicant": {"id": "app", "name": "Applicant", "birth_country": "USA"},
