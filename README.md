@@ -43,3 +43,23 @@ curl -X POST http://127.0.0.1:8000/api/evaluate/ \
     ]
   }'
 ```
+
+## Calling the hosted API
+
+The API is also deployed at `https://jure-sanguinis-api-git-main-simplyjackfosters-projects.vercel.app`. Use the same payload as above with the hosted base URL:
+
+```bash
+curl -X POST https://jure-sanguinis-api-git-main-simplyjackfosters-projects.vercel.app/api/evaluate/ \
+  -H "Content-Type: application/json" \
+  -d '{
+    "applicant": {"id": "app", "name": "Applicant", "birth_country": "USA"},
+    "ancestors": [
+      {"id": "a1", "name": "Giorgio", "birth_country": "Italy"},
+      {"id": "a2", "name": "Maria", "birth_country": "Argentina"}
+    ],
+    "lineage_links": [
+      {"parent_id": "a1", "child_id": "a2", "relationship": "father"},
+      {"parent_id": "a2", "child_id": "app", "relationship": "father"}
+    ]
+  }'
+```
