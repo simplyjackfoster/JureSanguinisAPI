@@ -1,0 +1,22 @@
+{
+  "rules": [
+    {
+      "id": "maternal_1948_court_only",
+      "description": "Maternal transmission before 1 Jan 1948 is court-only.",
+      "preconditions": {"needs_lineage": true},
+      "condition": {"eq": [{"var": "has_pre1948_maternal_link"}, true]},
+      "effects": {
+        "status": "COURT_ONLY_1948",
+        "notes": "Maternal link before 1 Jan 1948 requires court action; not available administratively.",
+        "confidence": "HIGH",
+        "needs_lawyer": true
+      },
+      "sources": [
+        "Italian Constitution 1948",
+        "Corte di Cassazione 1948 cases"
+      ],
+      "effective_date": "1948-01-01",
+      "contested": false
+    }
+  ]
+}

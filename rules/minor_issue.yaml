@@ -1,0 +1,32 @@
+{
+  "rules": [
+    {
+      "id": "minor_issue_block",
+      "description": "Parent naturalized while child minor, co-resident in jus soli country.",
+      "preconditions": {"needs_lineage": true},
+      "condition": {"eq": [{"var": "has_minor_issue_block"}, true]},
+      "effects": {
+        "status": "BLOCKED_ADMIN_MINOR_ISSUE",
+        "notes": "Minor issue per administrative circular; administrative path blocked though court often viable.",
+        "confidence": "MEDIUM",
+        "needs_lawyer": true
+      },
+      "sources": ["Ministero dell'Interno circular on minor-following-parent naturalization"],
+      "contested": true
+    },
+    {
+      "id": "minor_issue_edge_case",
+      "description": "Minor issue edge case (separate residence/emancipation).",
+      "preconditions": {"needs_lineage": true},
+      "condition": {"eq": [{"var": "has_minor_issue_edge"}, true]},
+      "effects": {
+        "status": "CONTESTED_EDGE_CASE",
+        "notes": "Evidence of emancipation or separate residence weakens minor issue; needs judicial review.",
+        "confidence": "LOW",
+        "needs_lawyer": true
+      },
+      "sources": ["Recent jurisprudence on minor naturalization edge cases"],
+      "contested": true
+    }
+  ]
+}

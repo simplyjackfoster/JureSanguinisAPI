@@ -1,0 +1,51 @@
+{
+  "rules": [
+    {
+      "id": "tajani_non_exempt_block",
+      "description": "Post-reform birth abroad with other citizenship and no exemption.",
+      "preconditions": {"needs_lineage": true},
+      "condition": {"eq": [{"var": "tajani_non_exempt"}, true]},
+      "effects": {
+        "status": "BLOCKED_REFORM_NO_EXEMPTION",
+        "notes": "Post-reform descendants born abroad with other citizenship at birth are not automatic Italians absent exemption.",
+        "acquisition_mode": "NOT_AUTOMATIC_POST_REFORM",
+        "confidence": "HIGH",
+        "needs_lawyer": true
+      },
+      "sources": [
+        "Tajani Decree and conversion law",
+        "Ministerial circular on implementation"
+      ],
+      "effective_date": "2024-12-23"
+    },
+    {
+      "id": "tajani_exempt_continue",
+      "description": "Post-reform birth abroad but exemption noted.",
+      "preconditions": {"needs_lineage": true},
+      "condition": {"eq": [{"var": "tajani_exempt"}, true]},
+      "effects": {
+        "status": "INTACT",
+        "notes": "Exemption documented; classical chain evaluation continues.",
+        "acquisition_mode": "AUTOMATIC_BY_BLOOD",
+        "confidence": "MEDIUM"
+      },
+      "sources": ["Conversion law exemptions guidance"],
+      "effective_date": "2024-12-23"
+    },
+    {
+      "id": "alternative_residence_path",
+      "description": "Descendant qualifies for residence-based accelerated path.",
+      "preconditions": {"needs_lineage": true},
+      "condition": {"eq": [{"var": "alternative_path_by_residence"}, true]},
+      "effects": {
+        "status": "ALTERNATIVE_PATH",
+        "notes": "Alternative residence-based path available; does not imply Italian at birth.",
+        "acquisition_mode": "BY_RESIDENCE",
+        "confidence": "MEDIUM",
+        "needs_lawyer": true
+      },
+      "sources": ["Reform benefit-of-law for descendants with residence in Italy"],
+      "effective_date": "2024-12-23"
+    }
+  ]
+}
