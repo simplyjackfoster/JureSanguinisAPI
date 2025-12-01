@@ -1,0 +1,21 @@
+{
+  "rules": [
+    {
+      "id": "classical_chain_broken_by_naturalization",
+      "description": "Parent naturalized before child birth breaking automatic transmission.",
+      "preconditions": {"needs_lineage": true},
+      "condition": {"eq": [{"var": "parent_citizenship_status"}, "BROKEN_NATURALIZATION"]},
+      "effects": {
+        "status": "BROKEN_NATURALIZATION",
+        "notes": "Naturalization before child birth breaks administrative chain; court may evaluate alternatives.",
+        "confidence": "MEDIUM",
+        "needs_lawyer": true
+      },
+      "sources": [
+        "Italian citizenship law art. 7",
+        "Consular practice guidance on loss by naturalization"
+      ],
+      "effective_date": "1912-06-13"
+    }
+  ]
+}
