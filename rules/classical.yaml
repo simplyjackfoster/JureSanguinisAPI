@@ -1,6 +1,22 @@
 {
   "rules": [
     {
+      "id": "missing_italian_birth_anchor",
+      "description": "Lineage lacks an Italian-born ancestor, so classical transmission cannot begin.",
+      "preconditions": {"needs_lineage": true},
+      "condition": {"eq": [{"var": "has_italian_birth_anchor"}, false]},
+      "effects": {
+        "status": "NO_ITALIAN_LINEAGE_ANCHOR",
+        "notes": "No one in the provided lineage is born in Italy; jure sanguinis requires an Italian-born ancestor.",
+        "acquisition_mode": "UNKNOWN",
+        "confidence": "HIGH",
+        "needs_lawyer": false
+      },
+      "sources": [
+        "Italian citizenship jure sanguinis requires an Italian-born ancestor"
+      ]
+    },
+    {
       "id": "classical_chain_broken_by_naturalization",
       "description": "Parent naturalized before child birth breaking automatic transmission.",
       "preconditions": {"needs_lineage": true},
